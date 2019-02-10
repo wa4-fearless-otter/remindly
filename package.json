@@ -6,7 +6,12 @@
   },
   "dependencies": {
     "electron": "4.0.4",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.3.3"
+    "hard-source-webpack-plugin": "^0.13.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
   }
 }
