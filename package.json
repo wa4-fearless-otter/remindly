@@ -2,16 +2,20 @@
   "name": "remindly",
   "private": true,
   "scripts": {
-    "start": "electron ."
+    "start": "webpack --watch"
   },
   "dependencies": {
-    "electron": "4.0.4",
-    "hard-source-webpack-plugin": "^0.13.1"
+    "electron": "4.0.4"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "clean-webpack-plugin": "^1.0.1",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "html-webpack-plugin": "^3.2.0",
     "typescript": "^3.3.3",
     "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1",
+    "webpack-shell-plugin": "^0.5.0"
   }
 }
