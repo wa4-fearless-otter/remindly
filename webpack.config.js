@@ -19,6 +19,10 @@ const config = {
         loader: "awesome-typescript-loader"
       },
       {
+        test: /\.vue$/,
+        loader: "vue-loader"
+      },
+      {
         test: /\.png$/,
         loader: "file-loader"
       }
