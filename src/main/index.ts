@@ -12,6 +12,8 @@ const openSettingsWindow = () => {
 
   if (isDevelopment) {
     settingsWindow.webContents.openDevTools();
+  } else {
+    settingsWindow.setMenuBarVisibility(false);
   }
 
   settingsWindow.on("close", () => {
