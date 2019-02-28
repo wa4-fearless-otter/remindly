@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+/*import { app, BrowserWindow } from "electron";
 import * as path from "path";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -34,4 +34,34 @@ app.on("activate", () => {
   if (mainWindow === null) {
     createWindow();
   }
+});*/
+
+import { app, dialog, Tray, Menu, nativeImage } from "electron";
+import * as path from "path";
+import * as icon from "./../assets/icon.png";
+
+app.on("ready", () => {
+  const image = nativeImage.createFromPath(path.join(__dirname, icon));
+  const tray = new Tray(image);
+  const trayMenu = Menu.buildFromTemplate([
+    {
+      label: "Settings",
+      click: () => console.log("Opening settings...")
+    },
+    {
+      label: "Quit",
+      click: () => {
+        dialog.showMessageBox({
+          message: "Do you really want to quit?",
+          buttons: ["Yes", "No", "Cancel"]
+        }, (response) => {
+          if (response === 0) {
+            app.quit();
+          }
+        });
+      }
+    }
+  ]);
+
+  tray.setContextMenu(trayMenu);
 });
