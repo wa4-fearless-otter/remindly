@@ -1,44 +1,34 @@
-/*import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, dialog, Tray, Menu, nativeImage } from "electron";
 import * as path from "path";
+import * as icon from "./../assets/icon.png";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-let mainWindow: BrowserWindow | undefined;
+let settingsWindow: BrowserWindow | undefined;
 
-const createWindow = () => {
-  mainWindow = new BrowserWindow();
+const openSettingsWindow = () => {
+  settingsWindow = new BrowserWindow();
 
-  mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
+  settingsWindow.loadFile(path.join(__dirname, "renderer/index.html"));
 
   if (isDevelopment) {
-    mainWindow.webContents.openDevTools();
+    settingsWindow.webContents.openDevTools();
   }
 
-  mainWindow.on("close", () => {
-    mainWindow = undefined;
+  settingsWindow.on("close", () => {
+    settingsWindow = undefined;
   });
 }
 
-app.on("ready", createWindow);
-
-app.on("window-all-closed", () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("activate", () => {
-  // On OS X it"s common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow();
-  }
-});*/
-
-import { app, dialog, Tray, Menu, nativeImage } from "electron";
-import * as path from "path";
-import * as icon from "./../assets/icon.png";
+const openCloseWindow = () => {
+  dialog.showMessageBox({
+    message: "Do you really want to quit?",
+    buttons: ["Yes", "No", "Cancel"]
+  }, (response) => {
+    if (response === 0) {
+      app.quit();
+    }
+  });
+}
 
 app.on("ready", () => {
   const image = nativeImage.createFromPath(path.join(__dirname, icon));
@@ -46,22 +36,15 @@ app.on("ready", () => {
   const trayMenu = Menu.buildFromTemplate([
     {
       label: "Settings",
-      click: () => console.log("Opening settings...")
+      click: openSettingsWindow
     },
     {
       label: "Quit",
-      click: () => {
-        dialog.showMessageBox({
-          message: "Do you really want to quit?",
-          buttons: ["Yes", "No", "Cancel"]
-        }, (response) => {
-          if (response === 0) {
-            app.quit();
-          }
-        });
-      }
+      click: openCloseWindow
     }
   ]);
 
   tray.setContextMenu(trayMenu);
 });
+
+app.on("window-all-closed", (e: Event) => e.preventDefault());
