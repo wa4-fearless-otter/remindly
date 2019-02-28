@@ -5,6 +5,7 @@ const { CheckerPlugin } = require("awesome-typescript-loader");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const WebpackShellPlugin = require("webpack-shell-plugin");
 
 const OUT_DIR = path.resolve(__dirname, "dist");
@@ -38,6 +39,7 @@ const config = {
         level: "info",
       }
     }),
+    new VueLoaderPlugin(),
     new WebpackShellPlugin({ onBuildEnd: ["electron " + OUT_DIR] })
   ],
   resolve: {
