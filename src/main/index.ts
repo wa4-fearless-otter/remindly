@@ -6,6 +6,13 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 let settingsWindow: BrowserWindow | undefined;
 
 const openSettingsWindow = () => {
+  if (settingsWindow !== undefined) {
+    // Show settings window when already open
+    settingsWindow.focus();
+
+    return;
+  }
+
   settingsWindow = new BrowserWindow();
 
   settingsWindow.loadFile(path.join(__dirname, "renderer/index.html"));
