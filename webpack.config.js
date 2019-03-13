@@ -3,8 +3,8 @@ const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const WebpackShellPlugin = require("webpack-shell-plugin");
+const { CheckerPlugin } = require("awesome-typescript-loader");
 
 const OUT_DIR = path.resolve(__dirname, "dist");
 
@@ -14,15 +14,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: "ts-loader",
+        test: /\.(ts|tsx)$/,
+        loader: "awesome-typescript-loader",
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          useCache: true
         }
-      },
-      {
-        test: /\.vue$/,
-        loader: "vue-loader"
       },
       {
         test: /\.png$/,
@@ -31,20 +27,17 @@ const config = {
     ]
   },
   plugins: [
+    new CheckerPlugin(),
     new CleanWebpackPlugin(),
     new HardSourceWebpackPlugin({
       info: {
         level: "info",
       }
     }),
-    new VueLoaderPlugin(),
     new WebpackShellPlugin({ onBuildEnd: ["electron " + OUT_DIR] })
   ],
   resolve: {
-    extensions: [".ts", ".js"],
-    alias: {
-      vue$: "vue/dist/vue.esm.js"
-    }
+    extensions: [".ts", ".tsx", ".js", ".jsx"]
   },
   node: {
     __dirname: false,
