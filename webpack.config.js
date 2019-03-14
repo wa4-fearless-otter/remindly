@@ -21,6 +21,14 @@ const config = {
         }
       },
       {
+        test: /\.scss$/,
+        loader: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      },
+      {
         test: /\.png$/,
         loader: "file-loader"
       }
