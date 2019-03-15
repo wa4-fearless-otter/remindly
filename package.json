@@ -9,7 +9,10 @@
     "bulma": "^0.7.4",
     "electron": "4.0.8",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-feather": "^1.1.6",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.8",
