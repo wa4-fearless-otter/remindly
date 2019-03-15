@@ -63,7 +63,6 @@ module.exports = [
     }
   }),
   merge(config, {
-    ...config,
     target: "electron-renderer",
     entry: "./src/renderer",
     output: {
