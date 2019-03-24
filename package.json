@@ -6,15 +6,18 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@rematch/core": "^1.1.0",
     "bulma": "^0.7.4",
     "electron": "4.1.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-feather": "^1.1.6"
+    "react-feather": "^1.1.6",
+    "react-redux": "^6.0.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.3",
+    "@types/react-redux": "^7.0.5",
     "awesome-typescript-loader": "^5.2.1",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
