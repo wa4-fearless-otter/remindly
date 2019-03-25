@@ -1,25 +1,33 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Plus } from "react-feather";
+import { Dispatch, RootState } from "./../store";
 import CronJobSetting from "./CronJobSetting";
 
-interface Props extends React.HTMLProps<HTMLDivElement> { }
+const mapState = (state: RootState) => ({ cronJobs: state.cronJobs });
 
-export default (props: Props) => {
+const mapDispatch = (dispatch: Dispatch) => ({
+	addCronJobs: dispatch.cronJobs.add()
+});
+
+type Props = ReturnType<typeof mapState> & ReturnType<typeof mapDispatch>;
+
+const Comp = (props: Props) => {
   return (
-    <div {...props}>
-      <section className="hero">
-        <div className="hero-body">
-          <div className="container">
-            <CronJobSetting />
+    <section className="hero">
+      <div className="hero-body">
+        <div className="container">
+          {props.cronJobs.forEach((job, i) => <CronJobSetting key={i} />)}
 
-            <button className="button">
-              <span className="icon">
-                <Plus />
-              </span>
-            </button>
-          </div>
+          <button className="button">
+            <span className="icon">
+              <Plus />
+            </span>
+          </button>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
+
+export default connect(mapState, mapDispatch)(Comp);
