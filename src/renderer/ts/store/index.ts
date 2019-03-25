@@ -1,4 +1,4 @@
-import { init } from "@rematch/core";
+import { init, RematchRootState } from "@rematch/core";
 import * as models from "./models";
 
 const store = init({
@@ -7,4 +7,6 @@ const store = init({
 
 export default store;
 
-store.dispatch.count.increment(1);
+export type Store = typeof store;
+export type Dispatch = typeof store.dispatch;
+export type RootState = RematchRootState<typeof models>;
