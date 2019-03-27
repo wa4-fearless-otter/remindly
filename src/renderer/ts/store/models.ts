@@ -11,13 +11,12 @@ const initState = [
 export const cronJobs = /*createModel<typeof initState>*/({
   state: initState,
   reducers: {
-    add: (state) => {
-      state.push({
+    add: state => [
+      ...state,
+      {
         cronJob: "",
         type: 0
-      });
-
-      return state;
-    }
+      }
+    ]
   }
 });
