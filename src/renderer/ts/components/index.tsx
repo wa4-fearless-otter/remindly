@@ -7,7 +7,7 @@ import CronJobSetting from "./CronJobSetting";
 const mapState = (state: RootState) => ({ cronJobs: state.cronJobs });
 
 const mapDispatch = (dispatch: Dispatch) => ({
-	addCronJobs: dispatch.cronJobs.add()
+	addCronJobs: dispatch.cronJobs.add
 });
 
 type Props = ReturnType<typeof mapState> & ReturnType<typeof mapDispatch>;
@@ -17,12 +17,17 @@ const Comp = (props: Props) => {
     <section className="hero">
       <div className="hero-body">
         <div className="container">
-          {props.cronJobs.forEach((job, i) => <CronJobSetting key={i} />)}
+          {props.cronJobs.map((job, i) => (
+            <section key={i} className="box">
+              <CronJobSetting />
+            </section>
+          ))}
 
-          <button className="button">
+          <button className="button is-primary" onClick={props.addCronJobs}>
             <span className="icon">
               <Plus />
             </span>
+            <span>Add job</span>
           </button>
         </div>
       </div>
