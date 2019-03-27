@@ -7,7 +7,8 @@ import CronJobSetting from "./CronJobSetting";
 const mapState = (state: RootState) => ({ cronJobs: state.cronJobs });
 
 const mapDispatch = (dispatch: Dispatch) => ({
-	addCronJobs: dispatch.cronJobs.add
+  addCronJob: dispatch.cronJobs.add,
+  removeCronJob: dispatch.cronJobs.remove
 });
 
 type Props = ReturnType<typeof mapState> & ReturnType<typeof mapDispatch>;
@@ -23,7 +24,7 @@ const Comp = (props: Props) => {
             </section>
           ))}
 
-          <button className="button is-primary" onClick={props.addCronJobs}>
+          <button className="button is-primary" onClick={props.addCronJob}>
             <span className="icon">
               <Plus />
             </span>

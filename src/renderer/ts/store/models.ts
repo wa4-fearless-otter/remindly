@@ -17,6 +17,10 @@ export const cronJobs = /*createModel<typeof initState>*/({
         cronJob: "",
         type: 0
       }
+    ],
+    remove: (state, index: number) => [
+      ...state.slice(0, index),
+      ...state.slice(index + 1)
     ]
   }
 });
