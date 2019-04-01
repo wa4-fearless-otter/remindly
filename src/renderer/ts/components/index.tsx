@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Plus } from "react-feather";
+import { Plus, X } from "react-feather";
 import { Dispatch, RootState } from "./../store";
 import CronJobSetting from "./CronJobSetting";
 
@@ -20,7 +20,18 @@ const Comp = (props: Props) => {
         <div className="container">
           {props.cronJobs.map((job, i) => (
             <section key={i} className="box">
-              <CronJobSetting />
+              <div className="columns">
+                <div className="column">
+                  <CronJobSetting />
+                </div>
+                <div className="column is-narrow">
+                  <button className="button is-danger" onClick={() => props.removeCronJob(i)}>
+                    <span className="icon">
+                      <X />
+                    </span>
+                  </button>
+                </div>
+              </div>
             </section>
           ))}
 
