@@ -40,7 +40,7 @@ const Comp = (props: Props) => {
             <span className="icon">
               <Plus />
             </span>
-            <span>Add job</span>
+            <span>Add a job</span>
           </button>
         </div>
       </div>

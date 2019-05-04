@@ -1,4 +1,5 @@
 import * as React from "react";
+import Type from "./Type";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   jobValue?: string,
@@ -15,8 +16,7 @@ export default (props: Props) => {
       <br />
       <div className="select">
         <select value={props.typeValue} onChange={props.onTypeChange}>
-          <option>1</option>
-          <option>2</option>
+          {Object.values(Type).map((value, i) => <option key={i}>{value}</option>)}
         </select>
       </div>
     </div>
