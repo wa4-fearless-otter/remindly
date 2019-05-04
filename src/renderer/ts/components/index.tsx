@@ -8,6 +8,7 @@ const mapState = (state: RootState) => ({ cronJobs: state.cronJobs });
 
 const mapDispatch = (dispatch: Dispatch) => ({
   addCronJob: dispatch.cronJobs.add,
+  setCronJob: dispatch.cronJobs.set,
   removeCronJob: dispatch.cronJobs.remove
 });
 
@@ -20,9 +21,9 @@ const Comp = (props: Props) => {
         <div className="container">
           {props.cronJobs.map((job, i) => (
             <section key={i} className="box">
-              <div className="columns">
+              <div className="columns is-mobile">
                 <div className="column">
-                  <CronJobSetting />
+                  <CronJobSetting jobValue={job.cronJob} onJobChange={(event) => props.setCronJob({ index: i, value: { ...job, cronJob: event.target.value }})}/>
                 </div>
                 <div className="column is-narrow">
                   <button className="button is-danger" onClick={() => props.removeCronJob(i)}>
