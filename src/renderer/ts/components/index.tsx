@@ -23,7 +23,12 @@ const Comp = (props: Props) => {
             <section key={i} className="box">
               <div className="columns is-mobile">
                 <div className="column">
-                  <CronJobSetting jobValue={job.cronJob} onJobChange={(event) => props.setCronJob({ index: i, value: { ...job, cronJob: event.target.value }})}/>
+                  <CronJobSetting
+                    jobValue={job.cronJob}
+                    typeValue={job.type}
+                    onJobChange={event => props.setCronJob({ index: i, value: { ...job, cronJob: event.target.value }})}
+                    onTypeChange={event => props.setCronJob({ index: i, value: { ...job, type: event.target.value }})}
+                  />
                 </div>
                 <div className="column is-narrow">
                   <button className="button is-danger" onClick={() => props.removeCronJob(i)}>

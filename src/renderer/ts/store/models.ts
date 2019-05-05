@@ -1,9 +1,10 @@
 // import { createModel } from "@rematch/core";
+import Type from "./../components/CronJobSetting/Type";
 
 const initState = [
   {
     cronJob: "",
-    type: 0
+    type: Type.RunCommand
   }
 ]
 
@@ -15,7 +16,7 @@ export const cronJobs = /*createModel<typeof initState>*/({
       ...state,
       {
         cronJob: "",
-        type: 0
+        type: Type.RunCommand
       }
     ],
     set: (

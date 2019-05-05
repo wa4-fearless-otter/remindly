@@ -3,7 +3,7 @@ import Type from "./Type";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   jobValue?: string,
-  typeValue?: number,
+  typeValue?: Type,
   onJobChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onTypeChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
