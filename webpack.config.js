@@ -1,78 +1,43 @@
-const path = require("path");
-const merge = require("webpack-merge");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackShellPlugin = require("webpack-shell-plugin");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+const path = require('path');
+const merge = require('webpack-merge');
+const rimraf = require('rimraf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const OUT_DIR = path.resolve(__dirname, "dist");
+const SRC_DIR = path.resolve(__dirname, 'src/');
+const OUT_DIR = path.resolve(__dirname, 'dist/');
+
+// Clean output directory
+rimraf.sync(OUT_DIR);
 
 const config = {
-  mode: "development",
-  devtool: "source-map",
+  output: { path: OUT_DIR },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
-        options: {
-          useCache: true
-        }
+        test: /\.tsx?$/,
+        use: 'ts-loader',
       },
-      {
-        test: /\.scss$/,
-        loader: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.png$/,
-        loader: "file-loader"
-      }
-    ]
+    ],
   },
-  plugins: [
-    new CheckerPlugin(),
-    new CleanWebpackPlugin(),
-    new HardSourceWebpackPlugin({
-      info: {
-        level: "info",
-      }
-    }),
-    new WebpackShellPlugin({ onBuildEnd: ["electron " + OUT_DIR] })
-  ],
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
-  node: {
-    __dirname: false,
-    __filename: false
-  }
 };
 
 module.exports = [
   merge(config, {
-    target: "electron-main",
-    entry: "./src",
+    target: 'electron-renderer',
+    entry: path.resolve(SRC_DIR, 'renderer/'),
     output: {
-      path: OUT_DIR,
-      filename: "index.js"
-    }
+      filename: '[hash].js',
+    },
+    plugins: [new HtmlWebpackPlugin()],
   }),
   merge(config, {
-    target: "electron-renderer",
-    entry: "./src/renderer",
+    target: 'electron-main',
+    entry: path.resolve(SRC_DIR, 'main/'),
     output: {
-      path: path.resolve(OUT_DIR, "renderer/"),
-      filename: "renderer.js"
+      filename: 'index.js',
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: "./src/renderer/index.html"
-      })
-    ]
-  })
-]
+  }),
+];
