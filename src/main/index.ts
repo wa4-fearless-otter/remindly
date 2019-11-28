@@ -16,7 +16,7 @@ const createMainWindow = () => {
     window.webContents.openDevTools();
   }
 
-  window.loadFile('index.html');
+  window.loadFile('./index.html');
 
   return window;
 };
