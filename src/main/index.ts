@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+import createTray from './createTray';
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 let mainWindow: BrowserWindow;
 
 const createMainWindow = () => {
@@ -16,7 +17,9 @@ const createMainWindow = () => {
     window.webContents.openDevTools();
   }
 
-  window.loadFile('./index.html');
+  window.loadFile('index.html');
+
+  createTray();
 
   return window;
 };

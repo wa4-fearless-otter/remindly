@@ -10,9 +10,14 @@ const OUT_DIR = path.resolve(__dirname, 'dist/');
 rimraf.sync(OUT_DIR);
 
 const config = {
+  devtool: 'eval-source-map',
   output: { path: OUT_DIR },
   module: {
     rules: [
+      {
+        test: /\.png$/,
+        use: 'file-loader',
+      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -29,7 +34,7 @@ module.exports = [
     target: 'electron-renderer',
     entry: path.resolve(SRC_DIR, 'renderer/'),
     output: {
-      filename: '[hash].js',
+      filename: 'renderer.js',
     },
     plugins: [new HtmlWebpackPlugin()],
   }),
