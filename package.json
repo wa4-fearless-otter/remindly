@@ -7,19 +7,23 @@
     "build:development": "yarn build --mode=development --watch",
     "build:production": "yarn build --mode=production",
     "lint": "eslint **/*.ts --fix",
-    "watch": "nodemon -w dist/ -x 'electron dist/index.js'"
+    "watch": "nodemon -w dist/index.js -x 'electron dist/index.js'"
   },
   "dependencies": {
+    "@xstyled/styled-components": "^1.15.0",
     "electron": "^7.1.2",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@blue-tomato/eslint-config-react": "^1.2.8",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.0",
+    "@types/xstyled__system": "^1.14.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "electron-devtools-installer": "^2.2.4",
