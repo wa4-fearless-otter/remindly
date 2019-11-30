@@ -41,7 +41,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.json', '.js', '.jsx', '.tsx', '.ts'],
   },
 };
 

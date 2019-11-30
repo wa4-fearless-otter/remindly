@@ -1,4 +1,5 @@
 import { app, dialog, BrowserWindow, Menu } from 'electron';
+import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import createTray from './createTray';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -17,6 +18,8 @@ const openSettings = () => {
   if (isDevelopment) {
     window.webContents.openDevTools();
     window.maximize();
+
+    installExtension(REACT_DEVELOPER_TOOLS);
   }
 
   window.loadFile('index.html');
