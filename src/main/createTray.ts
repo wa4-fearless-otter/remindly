@@ -1,19 +1,15 @@
-import { Menu, Tray } from 'electron';
+import { Menu, Tray, nativeImage } from 'electron';
 import * as path from 'path';
-import icon from './icon.png';
+import icon from './icon-grey.png';
 
 let tray;
 
-export default () => {
-  console.log(path.join(path.resolve(), 'dist', icon));
-  tray = new Tray(path.join(path.resolve(), 'dist', icon));
-  const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' },
-    { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' },
-  ]);
+export default (menu: Menu) => {
+  const image = nativeImage.createFromPath(path.join(__dirname, icon));
 
-  tray.setToolTip('This is my application.');
-  tray.setContextMenu(contextMenu);
+  tray = new Tray(image);
+
+  tray.setContextMenu(menu);
+
+  return tray;
 };

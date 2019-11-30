@@ -1,5 +1,9 @@
 declare module '*.png' {
-  const url: string;
+  const value: string;
+  export default value;
+}
 
-  export default url;
+declare module '*.ico' {
+  const value: string;
+  export default value;
 }

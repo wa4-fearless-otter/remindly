@@ -10,12 +10,16 @@ const OUT_DIR = path.resolve(__dirname, 'dist/');
 rimraf.sync(OUT_DIR);
 
 const config = {
+  node: {
+    __filename: false,
+    __dirname: false,
+  },
   devtool: 'eval-source-map',
   output: { path: OUT_DIR },
   module: {
     rules: [
       {
-        test: /\.png$/,
+        test: /\.(png|ico)$/,
         use: 'file-loader',
       },
       {
