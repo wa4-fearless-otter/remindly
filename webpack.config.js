@@ -26,6 +26,18 @@ const config = {
         test: /\.tsx?$/,
         use: 'ts-loader',
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              injectType: 'linkTag',
+            },
+          },
+          'file-loader',
+        ],
+      },
     ],
   },
   resolve: {
@@ -40,7 +52,13 @@ module.exports = [
     output: {
       filename: 'renderer.js',
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [
+      new HtmlWebpackPlugin({
+        inject: false,
+        template: require('html-webpack-template'),
+        appMountId: 'root',
+      }),
+    ],
   }),
   merge(config, {
     target: 'electron-main',

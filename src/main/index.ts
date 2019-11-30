@@ -16,6 +16,7 @@ const openSettings = () => {
 
   if (isDevelopment) {
     window.webContents.openDevTools();
+    window.maximize();
   }
 
   window.loadFile('index.html');
