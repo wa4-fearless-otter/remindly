@@ -1,0 +1,35 @@
+const colors = {
+  black: '#0A0A0A',
+  blackBis: '#121212',
+  blackTer: '#242424',
+  greyDarker: '#363636',
+  greyDark: '#4A4A4A',
+  grey: '#7A7A7A',
+  greyLight: '#B5B5B5',
+  greyLighter: '#DBDBDB',
+  greyLightest: '#EDEDED',
+  whiteTer: '#F5F5F5',
+  whiteBis: '#FAFAFA',
+  white: '#FFFFFF',
+  orange: '#FF470F',
+  yellow: '#FFDD57',
+  green: '#48C774',
+  turquoise: '#00D1B2',
+  cyan: '#3298DC',
+  blue: '#3273DC',
+  purple: '#B86BFF',
+  red: '#F14668',
+};
+
+export default {
+  ...colors,
+
+  primary: colors.orange,
+  link: colors.blue,
+  info: colors.cyan,
+  success: colors.green,
+  warning: colors.yellow,
+  danger: colors.red,
+  dark: colors.greyDarker,
+  text: colors.greyDark,
+};
