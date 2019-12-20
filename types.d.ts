@@ -11,10 +11,23 @@ declare module '*.ico' {
 }
 
 declare module '@xstyled/styled-components' {
-  const value: any;
+  import styled, { DefaultTheme, StyledComponent, ThemedStyledFunction } from 'styled-components';
+
+  type BoxProps = {
+    variant?: string;
+    justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-around' | 'space-between';
+  };
+
+  const xStyled: typeof styled & {
+    box: ThemedStyledFunction<'div', any, BoxProps, never>;
+    buttonBox: ThemedStyledFunction<'button', any, BoxProps, never>;
+    inputBox: ThemedStyledFunction<'input', any, BoxProps, never>;
+  };
+  const Box: StyledComponent<'div', any, BoxProps, never>;
   const ThemeProvider: any;
   const css: any;
 
-  export default value;
-  export { ThemeProvider, css };
+  export default xStyled;
+  export * from 'styled-components';
+  export { Box };
 }

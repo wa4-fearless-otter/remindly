@@ -10,9 +10,7 @@ const defaultConfig = {
     },
     ecmaVersion: 2018,
     sourceType: 'module',
-    project: './tsconfig.json',
   },
-  plugins: ['react'],
 };
 
 module.exports = {
@@ -34,7 +32,7 @@ module.exports = {
         ...defaultConfig.parserOptions,
         project: './tsconfig.json',
       },
-      plugins: [...defaultConfig.plugins, '@typescript-eslint'],
+      plugins: ['@typescript-eslint'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],

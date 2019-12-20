@@ -6,7 +6,8 @@ import colors from './colors';
 
 const theme = {
   colors,
-  space: ['0', '1rpx', '2rpx', '4rpx', '8rpx'],
+  space: ['0', '1rpx', '2rpx', '4rpx', '8rpx', '16rpx', '32rpx'],
+  sizes: ['0', '1rpx', '2rpx', '4rpx', '8rpx', '16rpx', '32rpx', '64rpx', '128rpx', '256rpx', '512rpx', '1024rpx'],
   borderWidths: ['0', '1rpx', '2rpx', '4rpx'],
   borderStyles: { solid: 'solid' },
   radii: ['0', '1rpx', '2rpx', '4rpx'],
