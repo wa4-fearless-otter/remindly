@@ -1,13 +1,15 @@
 import * as React from 'react';
 import styled from '@xstyled/styled-components';
-import TextMask from 'react-text-mask';
+import TextMask, { MaskedInputProps } from 'react-text-mask';
 import inputStyles from './shared/inputStyles';
+
+type Props = MaskedInputProps | UnkownProps;
 
 const Input = styled.inputBox`
   ${inputStyles}
 `;
 
-export default ({ ...props }) => (
+export default ({ ...props }: Props) => (
   <TextMask
     showMask
     placeholderChar=" "

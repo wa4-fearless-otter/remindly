@@ -2,6 +2,12 @@ import * as React from 'react';
 import styled from '@xstyled/styled-components';
 import { Button, Flex, Input } from './shared/components';
 
+const Centerer = styled(Flex)`
+  justify-content: center;
+  height: 100vh;
+  background-color: greyLightest;
+`;
+
 const Container = styled(Flex)`
   flex-direction: column;
   max-width: 11;
@@ -11,12 +17,11 @@ const Container = styled(Flex)`
 `;
 
 export default ({ ...props }) => (
-  <Flex {...props} justifyContent="center">
+  <Centerer {...props}>
     <Container>
       <Input mb="6" placeholder="test" />
       <Input variant="primary" mb="6" placeholder="test" />
-      <Button>Add reminder</Button>
       <Button variant="primary">Add reminder</Button>
     </Container>
-  </Flex>
+  </Centerer>
 );

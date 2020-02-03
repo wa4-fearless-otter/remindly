@@ -32,6 +32,7 @@ const theme = {
 
 const GlobalStyles = styled.box`
   * {
+    box-sizing: border-box;
     font-family: default;
     color: text;
   }
