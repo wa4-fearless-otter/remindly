@@ -1,0 +1,17 @@
+{
+  "React": {
+    "scope": "typescriptreact",
+    "prefix": "react",
+    "body": [
+      "import * as React from 'react';",
+      "import { Box } from '@renderer/shared/components';",
+      "",
+      "export default ({ ...props }) => (",
+      "  <Box {...props}>",
+      "    $0",
+      "  </Box>",
+      ");",
+      ""
+    ]
+  }
+}

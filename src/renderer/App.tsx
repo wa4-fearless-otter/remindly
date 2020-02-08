@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from '@xstyled/styled-components';
-import { Button, Flex, Input } from './shared/components';
+import { Flex } from '@renderer/shared/components';
+import ReminderItem from './ReminderItem';
+import AddReminder from './AddReminder';
 
 const Centerer = styled(Flex)`
   justify-content: center;
@@ -19,9 +21,8 @@ const Container = styled(Flex)`
 export default ({ ...props }) => (
   <Centerer {...props}>
     <Container>
-      <Input mb="6" placeholder="test" />
-      <Input variant="primary" mb="6" placeholder="test" />
-      <Button variant="primary">Add reminder</Button>
+      <ReminderItem mb="6" />
+      <AddReminder />
     </Container>
   </Centerer>
 );

@@ -149,6 +149,8 @@ declare module '@xstyled/styled-components' {
     box: XStyledFunction<'div'>;
     buttonBox: XStyledFunction<'button'>;
     inputBox: XStyledFunction<'input'>;
+    labelBox: XStyledFunction<'label'>;
+    spanBox: XStyledFunction<'span'>;
   };
 
   export default xStyled;

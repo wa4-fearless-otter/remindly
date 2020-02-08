@@ -42,6 +42,10 @@ const config = {
   },
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.tsx', '.ts'],
+    alias: {
+      '@main': path.resolve(SRC_DIR, 'main/'),
+      '@renderer': path.resolve(SRC_DIR, 'renderer/'),
+    },
   },
 };
 

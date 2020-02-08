@@ -1,21 +1,17 @@
 import * as React from 'react';
 import styled from '@xstyled/styled-components';
-import TextMask, { MaskedInputProps } from 'react-text-mask';
 import inputStyles from './shared/inputStyles';
 
-type Props = MaskedInputProps | UnkownProps;
+type Props = UnkownProps & {
+  mask?: (value: string) => string;
+};
 
 const Input = styled.inputBox`
   ${inputStyles}
 `;
 
-export default ({ ...props }: Props) => (
-  <TextMask
-    showMask
-    placeholderChar=" "
-    guide
-    keepCharPositions
-    {...props}
-    render={(ref, inputProps) => <Input ref={ref} {...inputProps} />}
-  />
-);
+export default ({ mask, ...props }: Props) => {
+  const [value, setValue] = React.useState('');
+
+  return <Input value={value} onChange={({ target }) => mask && setValue(mask(target.value))} {...props} />;
+};

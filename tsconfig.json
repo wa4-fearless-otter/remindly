@@ -2,6 +2,11 @@
   "compilerOptions": {
     "strict": true,
     "sourceMap": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "src/",
+    "paths": {
+      "@main/*": ["main/*"],
+      "@renderer/*": ["renderer/*"]
+    }
   }
 }
