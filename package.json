@@ -10,6 +10,7 @@
     "watch": "nodemon -w dist/index.js -x 'electron dist/index.js'"
   },
   "dependencies": {
+    "@blue-tomato/use-retext": "^1.2.6",
     "@xstyled/styled-components": "^1.16.0",
     "@xstyled/system": "^1.16.0",
     "change-case": "^4.1.1",

@@ -164,6 +164,11 @@
     eslint-config-airbnb-base "^14.0.0"
     eslint-config-prettier "^6.10.0"
 
+"@blue-tomato/use-retext@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@blue-tomato/use-retext/-/use-retext-1.2.6.tgz#7a49709ecb51153d4a1b018abbab9ca641a1f134"
+  integrity sha512-9n7GaSWaTD3VeUzISdGGUVcaYlyqfQJuEhupFeJVNxNQmS1xUtBvw9J0S2jQREaws9bRXC1+wOz2EORZvPJ54w==
+
 "@electron/get@^1.0.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@electron/get/-/get-1.7.1.tgz#41aa60871b9d7e225bbe68135012f88a9ef87012"
